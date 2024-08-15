@@ -1,129 +1,167 @@
 
-<html><head><base href="https://websim-creation-engine.ai/wallet-summary-tool/" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Инструмент Суммирования Кошельков</title>
-    <style>
-      body {
-        font-family: 'Roboto', sans-serif;
-        max-width: 800px;
-        margin: 0 auto;
+<html><head><base href="https://address-uniqueness-checker.com/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Уникальный Адресоискатель</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f0f8ff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         padding: 20px;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        color: #333;
-      }
-      h1 {
-        text-align: center;
-        color: #2c3e50;
-        margin-bottom: 30px;
-      }
-      .container {
-        background-color: #ffffff;
-        border-radius: 10px;
-        padding: 30px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      }
-      textarea {
-        width: 100%;
-        height: 200px;
-        margin-bottom: 20px;
-        padding: 15px;
-        border: 2px solid #3498db;
-        border-radius: 8px;
-        font-size: 14px;
-        transition: border-color 0.3s ease;
-      }
-      textarea:focus {
-        outline: none;
-        border-color: #2980b9;
-      }
-      button {
-        background-color: #3498db;
-        border: none;
-        color: white;
-        padding: 12px 24px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 25px;
-        transition: all 0.3s ease;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-      }
-      button:hover {
-        background-color: #2980b9;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-      }
-      #result {
-        background-color: #f9f9f9;
-        border: 2px solid #e74c3c;
-        border-radius: 8px;
-        padding: 15px;
-        margin-top: 20px;
-        font-family: 'Courier New', monospace;
-        white-space: pre-wrap;
-        word-break: break-all;
-      }
-      .button-container {
+        margin: 0;
+    }
+    .header-container {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 900px;
+        margin-bottom: 20px;
+    }
+    .back-button {
+        background-color: rgba(75, 0, 130, 0.7);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 16px;
+        text-decoration: none;
+    }
+    .back-button:hover {
+        background-color: rgba(75, 0, 130, 0.9);
+    }
+    h1 {
+        color: #4b0082;
+        text-shadow: 1px 1px 2px #ffa500;
+        font-size: 24px;
+        text-align: center;
+        margin: 0;
+        flex-grow: 1;
+    }
+    .container {
+        background-color: white;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        max-width: 100%;
+        width: 90%;
+    }
+    textarea {
+        width: 100%;
+        height: 120px;
+        margin-bottom: 10px;
+        border: 2px solid #4b0082;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 16px;
+    }
+    button {
+        background-color: #4b0082;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        margin: 5px 0;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 100%;
+        font-size: 16px;
+    }
+    button:hover {
+        background-color: #6a5acd;
+    }
+    #result {
         margin-top: 20px;
-      }
-    </style>
-    </head>
-    <body>
-      <div class="container">
-        <h1>Инструмент Суммирования Кошельков</h1>
-        <textarea id="input" placeholder="Введите информацию о кошельках здесь (формат: кошелек;сумма)"></textarea>
-        <div class="button-container">
-          <button onclick="processInput()">Обработать</button>
-          <button onclick="copyResult()">Копировать результат</button>
-        </div>
+        padding: 10px;
+        border: 2px dashed #4b0082;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+    #result textarea {
+        height: 100px;
+    }
+    @media (min-width: 600px) {
+        .container {
+            width: 80%;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 28px;
+        }
+        button {
+            width: auto;
+            margin: 5px;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="header-container">
+        <a href="https://miplix.github.io/servises/" class="back-button">Назад</a>
+        <h1>🕵️‍♂️ Уникальный Адресоискатель 🕵️‍♀️</h1>
+    </div>
+    <div class="container">
+        <textarea id="input" placeholder="Вставьте ваши адреса сюда, по одному на строку"></textarea>
+        <button onclick="analyzeAddresses()">Анализировать</button>
+        <button onclick="copyResult()">Копировать результат</button>
         <div id="result"></div>
-      </div>
-    
-      <script>
-        function processInput() {
-          const input = document.getElementById('input').value;
-          const lines = input.split('\n');
-          const wallets = {};
-    
-          lines.forEach(line => {
-            const [wallet, amount] = line.replace(/\t;\t/g, ';').split(';');
-            if (wallet && amount) {
-              wallets[wallet] = (wallets[wallet] || 0) + parseFloat(amount);
+    </div>
+
+    <script>
+        function analyzeAddresses() {
+            const input = document.getElementById('input').value;
+            const addresses = input.split('\n').map(addr => addr.trim()).filter(addr => addr);
+            const lowercaseAddresses = addresses.map(addr => transliterate(addr.toLowerCase()));
+            const uniqueAddresses = [...new Set(lowercaseAddresses)];
+            const duplicates = lowercaseAddresses.filter((addr, index) => lowercaseAddresses.indexOf(addr) !== index);
+            const uniqueDuplicates = [...new Set(duplicates)];
+            
+            let resultHTML = '';
+            if (uniqueAddresses.length === addresses.length) {
+                resultHTML = '<p>🎉 Поздравляем! Все адреса уникальны! 🎉</p>';
+            } else {
+                resultHTML = `<p>🧐 Найдено повторений: ${addresses.length - uniqueAddresses.length}</p>`;
+                resultHTML += '<p>Повторяющиеся адреса:</p>';
+                resultHTML += '<ul>' + uniqueDuplicates.map(addr => `<li>${addr}</li>`).join('') + '</ul>';
             }
-          });
-    
-          const result = Object.entries(wallets)
-            .map(([wallet, total]) => `${wallet};${total}`)
-            .join('\n');
-    
-          document.getElementById('result').textContent = result;
+            
+            resultHTML += '<p>Уникальные адреса в нижнем регистре :</p>';
+            resultHTML += '<textarea id="uniqueAddresses" readonly>' + uniqueAddresses.join('\n') + '</textarea>';
+            
+            document.getElementById('result').innerHTML = resultHTML;
         }
-    
+        
         function copyResult() {
-          const result = document.getElementById('result');
-          const textArea = document.createElement('textarea');
-          textArea.value = result.textContent;
-          document.body.appendChild(textArea);
-          textArea.select();
-          document.execCommand('copy');
-          document.body.removeChild(textArea);
-          
-          // Визуальная обратная связь вместо alert
-          const copyButton = document.querySelector('button:last-of-type');
-          const originalText = copyButton.textContent;
-          copyButton.textContent = 'Скопировано!';
-          copyButton.style.backgroundColor = '#27ae60';
-          setTimeout(() => {
-            copyButton.textContent = originalText;
-            copyButton.style.backgroundColor = '';
-          }, 2000);
+            const resultTextarea = document.getElementById('uniqueAddresses');
+            if (resultTextarea) {
+                resultTextarea.select();
+                document.execCommand('copy');
+                
+                // Визуальное подтверждение копирования
+                const originalText = document.querySelector('button:nth-of-type(2)').textContent;
+                document.querySelector('button:nth-of-type(2)').textContent = 'Скопировано!';
+                setTimeout(() => {
+                    document.querySelector('button:nth-of-type(2)').textContent = originalText;
+                }, 2000);
+            } else {
+                alert('Сначала проанализируйте адреса!');
+            }
         }
-      </script>
-    </body>
-    </html>
+
+        function transliterate(text) {
+            const cyrillicToLatin = {
+                'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e', 'ж': 'zh',
+                'з': 'z', 'и': 'i', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o',
+                'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'h', 'ц': 'ts',
+                'ч': 'ch', 'ш': 'sh', 'щ': 'sch', 'ъ': '', 'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu',
+                'я': 'ya'
+            };
+            return text.split('').map(char => cyrillicToLatin[char.toLowerCase()] || char).join('');
+        }
+    </script>
+</body></html>
